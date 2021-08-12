@@ -5,7 +5,7 @@
 # @Date  : 2020/2/4
 from db.RemindDB import RemindDB
 import uuid
-from msg_consumer.SentConsumer import sent_queue_msg, build_queue_msg
+from consumer.SentConsumer import sent_queue_msg, build_queue_msg
 
 
 class UserFriendsSet(RemindDB):
@@ -60,3 +60,13 @@ class UserFriendsSet(RemindDB):
         sent_queue_msg(build_queue_msg(share_id, user_name+' 已通过你的分享成为提醒喵的好友，现在你可以发送“好友提醒”来提醒ta了'))
         sent_queue_msg(build_queue_msg(user_id, '你已接受 ' + share_name+' 的名片分享，你可以发送“好友提醒”来提醒ta哦'))
 
+
+if __name__ == '__main__':
+    UserFriendsSet().share_add('111', 'user_name1', 'wxid_8j0iupav1oh21', 'jipian')
+    UserFriendsSet().share_add('333', 'user_name3', 'wxid_8j0iupavzoh21', 'jipian')
+    UserFriendsSet().share_add('444', 'user_name4', 'wxid_8j0iupaz1oh21', 'jipian')
+    UserFriendsSet().update_status('444', 'user_name1')
+    UserFriendsSet().update_status('333', 'user_name1')
+    friends = UserFriendsSet().find_friends('wxid_8j0iupavz1oh21')
+    print(friends)
+    # UserFriendsSet().del_friends('222')

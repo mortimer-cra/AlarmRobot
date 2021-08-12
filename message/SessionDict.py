@@ -18,7 +18,19 @@ REMIND_DATE_MISSING = 'remind_date_missing'
 REMIND_DO_MISSING = 'remind_do_missing'
 REMIND_WHO_MISSING = 'remind_who_missing'
 JOB_DEL = 'job_del'
+JOB_DEL_ADMIN = 'job_del_admin'
+ROOM_CHOOSE = 'room_choose'
+ROOM_REMIND = 'room_remind'
+FRIEND_CHOOSE = 'friend_choose'
+FRIENDS_REMIND = 'friends_remind'
 WEATHER_CITY_MISSING = 'weather_city_missing'
+NEWS_CHANNEL = 'news_channel'
+BUS_CITY = 'bus_city'
+BUS_LINE = 'bus_line'
+BUS_TARGET = 'bus_target'
+YIQING_CITY = 'yiqing_city'
+FUND_CODE = 'fund_code'
+STOCK_CODE = 'stock_code'
 
 
 # put
@@ -34,7 +46,7 @@ def put_session_dict(**kwargs):
 def session_threshold_msg(wxid_session):
     re_msg = ''
     wxid_session[SESSION_THRESHOLD] += 1
-    if wxid_session[SESSION_THRESHOLD] > 2:
+    if wxid_session[SESSION_THRESHOLD] > 1:
         re_msg = ReplyEnum.exit_session
     return re_msg
 

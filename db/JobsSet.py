@@ -4,7 +4,7 @@
 # @Author: Administrator
 # @Date  : 2020/2/4
 from db.MongoDBClient import MongoDBClient
-from message.RemindUtil import nature_time, datetime
+from remind.RemindUtil import nature_time, datetime
 from remind.WorkDay import *
 
 
@@ -24,5 +24,8 @@ class JobsSet(MongoDBClient):
                         day = next_workday(day)
                     elif workday_dict[key] == 2:
                         day = next_holiday(day)
+            if remark == '久坐提醒' and (not is_workday(datetime.today())):
+                day = datetime.strptime(datetime.strftime(datetime.today(), '%Y-%m-%d 09:00:00'), '%Y-%m-%d %H:%M:%S')
+                day = next_workday(day)
             return nature_time(day.strftime("%Y-%m-%d %H:%M:%S"))
         return None
