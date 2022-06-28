@@ -1,4 +1,4 @@
-arrow==0.13.1
+arrow==0.15.1
 requests==2.21.0
 jieba==0.39
 qqai==0.2.1
